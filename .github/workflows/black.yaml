@@ -39,7 +39,6 @@ jobs:
           black ${{ steps.changed-files.outputs.all_changed_files }}
 
       - name: Commit changed files
-        uses: actions/checkout@v4
         run: |
           if [[ -z $(git status -s) ]]; then exit 0; fi
           git config user.name github-actions

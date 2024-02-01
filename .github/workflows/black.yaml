@@ -2,7 +2,9 @@ name: Black (python)
 # Solution from https://stackoverflow.com/a/72088304
 
 on:
-  push:
+  pull_request:
+    branches:
+      - main
     paths:
       - '**.py'
 

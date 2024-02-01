@@ -3,15 +3,16 @@ name: Black (python)
 
 on:
   pull_request_target:
+    types: [assigned, opened, edited, synchronize, reopened]
     paths:
       - '**.py'
+
+permissions:
+  contents: write
 
 jobs:
   reformat_with_black:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
     steps:
       - name: Checkout branch
         uses: actions/checkout@v4

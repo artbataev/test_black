@@ -3,8 +3,7 @@ name: Black (python)
 
 on:
   pull_request:
-    branches:
-      - main
+    types: [opened, synchronize, reopened]
 
 jobs:
   reformat_with_black:

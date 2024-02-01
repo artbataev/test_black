@@ -2,7 +2,7 @@ name: Black (python)
 # Solution from https://stackoverflow.com/a/72088304
 
 on:
-  pull_request:
+  push:
     branches:
       - main
     paths:
@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout branch
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 

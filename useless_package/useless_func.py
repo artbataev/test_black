@@ -1,0 +1,21 @@
+import sys
+
+
+
+
+
+def useless_func(x):
+    """
+
+
+
+    Useless docstring
+    :param x:
+    :return:
+
+
+
+
+    """
+
+    return x

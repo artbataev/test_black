@@ -36,7 +36,7 @@ jobs:
 
       - name: Apply black only to changed files
         run: |
-          if [[ -z ${{ steps.changed-files.outputs.all_changed_files }} ]]; then exit 0; fi
+          if [[ -z "${{ steps.changed-files.outputs.all_changed_files }}" ]]; then exit 0; fi
           black ${{ steps.changed-files.outputs.all_changed_files }}
 
       - name: Commit changed files

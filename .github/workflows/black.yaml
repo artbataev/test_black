@@ -5,15 +5,29 @@ on:
   pull_request:
     branches:
       - main
+    paths:
+      - '**.py'
+
+permissions:
+  contents: write
 
 jobs:
   reformat_with_black:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout branch
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      # strange workaround from https://github.com/actions/checkout/issues/6#issuecomment-544726182
+      - name: reattach HEAD to Head Ref
+        run: git checkout "$(echo ${{ github.head_ref }} | sed -E 's|refs/[a-zA-Z]+/||')"
+        if: github.head_ref != ''
+
+      - name: reattach HEAD to Ref
+        run: git checkout "$(echo ${{ github.ref }} | sed -E 's|refs/[a-zA-Z]+/||')"
+        if: github.head_ref == ''
 
       - name: Get changed files
         id: changed-files
@@ -23,14 +37,6 @@ jobs:
           files: |
             **.py
 
-      - name: List all changed files
-        env:
-          ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
-        run: |
-          for file in "$ALL_CHANGED_FILES"; do
-            echo "$file was changed"
-          done
-
       - name: Setup Python env
         uses: actions/setup-python@v3
 
@@ -39,4 +45,14 @@ jobs:
 
       - name: Apply black only to changed files
         run: |
+          if [[ -z "${{ steps.changed-files.outputs.all_changed_files }}" ]]; then exit 0; fi
           black ${{ steps.changed-files.outputs.all_changed_files }}
+
+      - name: Commit changed files
+        run: |
+          if [[ -z $(git status -s) ]]; then exit 0; fi
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "Reformatted with black"
+          git push

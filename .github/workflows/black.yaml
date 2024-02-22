@@ -65,7 +65,8 @@ jobs:
 #          git commit -m "Reformatted with black"
 #          git push
 
-      - uses: psf/black@stable
+      - name: black
+        uses: psf/black@stable
         with:
           options: "--check --verbose"
           src: "${{ steps.changed-files.outputs.all_changed_files }}"

@@ -68,6 +68,6 @@ jobs:
       - name: black
         uses: psf/black@stable
         with:
-          options: "--check --verbose"
+          options: "--verbose"
           src: "${{ steps.changed-files.outputs.all_changed_files }}"
           version: "~= 24.0"

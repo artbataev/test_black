@@ -8,8 +8,8 @@ on:
     paths:
       - '**.py'
 
-#permissions:
-#  contents: write
+permissions:
+  contents: write
 
 jobs:
   reformat_with_black:

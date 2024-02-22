@@ -15,10 +15,10 @@ jobs:
   reformat_with_black:
     runs-on: ubuntu-latest
     steps:
-#      - name: Checkout branch
-#        uses: actions/checkout@v4
-#        with:
-#          fetch-depth: 0
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 #
 #      # strange workaround from https://github.com/actions/checkout/issues/6#issuecomment-544726182
 #      - name: reattach HEAD to Head Ref

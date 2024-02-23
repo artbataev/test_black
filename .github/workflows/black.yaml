@@ -53,3 +53,4 @@ jobs:
         with:
           message: Apply isort and black reformatting
           commit: --signoff
+          github_token: ${{ secrets.custom_token_for_test_black }}

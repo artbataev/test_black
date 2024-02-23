@@ -1,6 +1,7 @@
+import itertools
 import sys
 import time
-import itertools
+
 
 def useless_func(x):
     """

@@ -17,4 +17,3 @@ def useless_func(x):
     """
 
     return x
-

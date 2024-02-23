@@ -20,4 +20,6 @@ def useless_func(x):
 
 
 
-    return x
+    return (x,
+
+            x)

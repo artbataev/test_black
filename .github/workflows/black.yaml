@@ -22,7 +22,7 @@ jobs:
         with:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
-          token: ${{ secrets.custom_token_for_test_black }}
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN_FORMAT }}
 
       # https://github.com/tj-actions/changed-files
       - name: Get changed files

@@ -17,4 +17,9 @@ def useless_func(x):
 
     """
 
-    return (x, x, x)
+    return (x, x,
+
+
+
+
+            x)

@@ -3,9 +3,6 @@ import sys
 import time
 
 
-
-
-
 def useless_func(x):
     """
 
